@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import axios from "axios";
 import { Await, useLoaderData } from "react-router-dom";
 import "./Accessories.css"
+import { Card } from "react-bootstrap";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -18,55 +19,17 @@ const Home = () => {
             return(
             <div>
               {/* Your order is : ghaseel sayara w sho bedak tdef 3leh */}
-              
-            <div className="accessoryCard">
+            <div className="accessoryCardAll">
 {result.map((accessory) => {
-  return (
-    <div className="a">
-                <section className="sec">
-  <div class="text-center container py-5">
-    <h4 class="mt-4 mb-5"><strong>Bestsellers</strong></h4>
-
-    <div class="row">
-      <div class="col-lg-4 col-md-12 mb-4">
-        <div class="card">
-          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-            data-mdb-ripple-color="light">
-            <img className="accessoryImg"src={accessory.img} />
-            <a href="#!">
-              <div class="mask">
-                <div class="d-flex justify-content-start align-items-end h-100">
-                  <h5><span class="badge bg-primary ms-2">Add to cart</span></h5>
-                </div>
-              </div>
-              <div class="hover-overlay">
-                <div class="mask" ></div>
-              </div>
-            </a>
-          </div>
-          <div class="card-body">
-            <a href="" class="text-reset">
-              <h5 class="card-title mb-3">{accessory.name}</h5>
-            </a>
-            <a href="" class="text-reset">
-              <p>{accessory.description}</p>
-            </a>
-            <h6 class="mb-3">Price {accessory.price} JDs</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      
-
-    </div>
-  </div>
-</section>         
-
-                
-                </div>
-              );
+  return (<Card className='accessoryCard' style={{ width: '18rem' }}>
+  <Card.Img variant="top" src= {accessory.img} />
+  <Card.Body>
+    <Card.Title>{accessory.name}</Card.Title>
+    <Card.Text>
+      Price : {accessory.price} JD
+    </Card.Text>
+     <BsCartPlus className='addtocart' onClick={()=>{}}/>                </Card.Body>
+</Card>)
             })};
             
           </div>
